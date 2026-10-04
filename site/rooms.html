@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rooms and cottages · The Inn at Sunrise Point</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300..700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F2F3EF;color:#1B2A33;font-family:'Jost','Avenir Next','Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1B2A33}a:hover{color:#8A5C0F}
+img{max-width:100%}
+:focus-visible{outline:2px solid #D49A2E;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<div style="width: 100%; background: #F2F3EF; color: #1B2A33; font-family: 'Jost', 'Avenir Next', 'Segoe UI', sans-serif">
+
+<header style="max-width: 1280px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+<a href="home.html" aria-label="The Inn at Sunrise Point, home" style="display: flex; align-items: center"><img src="logo.png" alt="The Inn at Sunrise Point" style="height: 72px; width: auto; display: block"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase">
+<a href="rooms.html" aria-current="page" style="text-decoration: underline; text-underline-offset: 8px; text-decoration-color: #D49A2E">Stay</a>
+<a href="offers.html" style="text-decoration: none">Offers</a>
+<a href="#celebrate" style="text-decoration: none">Celebrate</a>
+<a href="story.html" style="text-decoration: none">The Inn</a>
+<a href="#midcoast" style="text-decoration: none">Midcoast</a>
+<a href="#plan" style="text-decoration: none">Plan</a>
+</nav>
+<a href="#book" style="background: #D49A2E; color: #1B2A33; padding: 14px 26px; border-radius: 2px; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">Book your stay</a>
+</header>
+
+<section style="background: #1B2A33; color: #EEF1EC">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 32px 80px; display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: end; justify-content: space-between">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #E2A83F">Rooms &amp; Cottages</p>
+<h1 style="margin: 0; font-family: 'Italiana', Georgia, serif; font-weight: 400; font-size: clamp(44px, 5.5vw, 76px); line-height: 1.04; text-wrap: balance">Twelve rooms, each named for an artist of the Maine coast</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #B9C6CB; max-width: 38rem">Every room has a fireplace, a private deck or porch, and breakfast for two. Choose a cottage at the water's edge, a room in the Main House, or a suite in the Garden House.</p>
+</div>
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid #E2A83F; padding-left: 24px"><p style="margin: 0; font-family: 'Italiana', Georgia, serif; font-size: 40px">From [$___]</p><p style="margin: 0; font-size: 15px; color: #B9C6CB">a night, breakfast included · two-night minimum</p></div>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 48px 32px 112px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 16px; position: sticky; top: 0; background: #F2F3EF; padding: 16px 0; z-index: 2; border-bottom: 1px solid #D9DEDA">
+<div id="groups" role="group" aria-label="Building" style="display: flex; flex-wrap: wrap; gap: 10px"></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<p style="margin: 0 6px 0 0; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B686E">Must have</p>
+<span id="feats" style="display: contents"></span>
+<p style="margin: 0 0 0 auto; font-size: 15px; color: #5B686E"><span id="count"></span></p>
+</div>
+</div>
+
+<div id="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 40px 32px"></div>
+<div id="empty" hidden><p style="margin: 0; font-size: 18px; color: #33434B">No room has all of those. Try removing a "Must have" filter.</p></div>
+</section>
+
+<section style="background: #FAFAF7">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 32px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #8A5C0F">Side by side</p><h2 style="margin: 0; font-family: 'Italiana', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4vw, 52px)">Compare every room</h2></div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 860px; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums">
+<thead><tr style="text-align: left; border-bottom: 2px solid #1B2A33"><th style="padding: 12px 10px; font-weight: 600">Room</th><th style="padding: 12px 10px; font-weight: 600">Building</th><th style="padding: 12px 10px; font-weight: 600">Bed</th><th style="padding: 12px 10px; font-weight: 600">View</th><th style="padding: 12px 10px; font-weight: 600">Fireplace</th><th style="padding: 12px 10px; font-weight: 600">Bath</th><th style="padding: 12px 10px; font-weight: 600">Sleeps</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5B686E">Travelling as four? Rachel Carson and Fitz Henry Lane cottages connect through a private hallway, and the Longfellow Suite connects to either Garden House loft.</p>
+</div>
+</section>
+
+<section id="plan" style="max-width: 1280px; margin: 0 auto; padding: 80px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #56705F">Arrival</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #33434B">Check-in 3–8 p.m., check-out 11 a.m.</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #56705F">Stays</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #33434B">Two-night minimum. One night's deposit confirms.</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #56705F">Guests</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #33434B">Ages 14 and up. No pets. Non-smoking.</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #56705F">Access</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #33434B">Historic buildings, not wheelchair accessible. Call (207) 236-7716 and we'll find the right room.</p></div>
+</section>
+
+<footer style="background: #1B2A33; color: #DCE3E2">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px">
+<img src="logo-light.png" alt="The Inn at Sunrise Point" style="width: 150px; height: auto">
+<p style="margin: 0; font-size: 15px; line-height: 1.6">55 Sunrise Point Road, Lincolnville, Maine · (207) 236-7716</p>
+</div>
+</footer>
+</div>
+<script>
+const rooms = [
+      { name: 'Winslow Homer Cottage', group: 'cottage', groupLabel: 'Cottage', line: 'Our most private and most requested cottage, with sweeping water views.', bed: 'King', view: 'Direct ocean', fire: 'Gas', bath: 'Deep soaking tub, multi-head shower', sleeps: '2', direct: true, wood: false, four: false },
+      { name: 'Fitz Henry Lane Cottage', group: 'cottage', groupLabel: 'Cottage', line: 'Closest to the water, with elegant furnishings and a luxurious bath.', bed: 'King', view: 'Direct ocean', fire: 'Gas', bath: 'Deep soaking tub, multi-head shower', sleeps: '2', direct: true, wood: false, four: false },
+      { name: 'Rachel Carson Cottage', group: 'cottage', groupLabel: 'Cottage', line: 'A spacious premium cottage with a separate sitting area.', bed: 'King + queen sofa bed', view: 'Direct ocean', fire: 'Gas', bath: 'Air-jet tub, multi-head shower', sleeps: '4', direct: true, wood: false, four: true },
+      { name: 'Edward Hopper Cottage', group: 'cottage', groupLabel: 'Cottage', line: 'A classic Maine cottage facing both sunrise and moonrise.', bed: 'King', view: 'Ocean', fire: 'Wood', bath: 'Double jetted tub, walk-in shower', sleeps: '2', direct: false, wood: true, four: false },
+      { name: 'Richard Russo Cottage', group: 'cottage', groupLabel: 'Cottage', line: 'Room to spread out, with ocean and garden views.', bed: 'King + queen sofa bed', view: 'Ocean', fire: 'Wood', bath: 'Double jetted tub, walk-in shower', sleeps: '4', direct: false, wood: true, four: true },
+      { name: 'May Sarton Room', group: 'main', groupLabel: 'Main House', line: 'Second floor, handcrafted four-poster bed and a private deck.', bed: 'Queen four-poster', view: 'Direct ocean', fire: 'Gas', bath: 'Soaking tub and shower', sleeps: '2', direct: true, wood: false, four: false },
+      { name: 'Sarah Orne Jewett Room', group: 'main', groupLabel: 'Main House', line: 'Contemporary, with a wood-burning fireplace facing the bay.', bed: 'Queen', view: 'Direct ocean', fire: 'Wood', bath: 'Extra-long soaking tub, walk-in shower', sleeps: '2', direct: true, wood: true, four: false },
+      { name: 'E.B. White Room', group: 'main', groupLabel: 'Main House', line: 'Cozy and sun-filled, looking head-on at Penobscot Bay.', bed: 'Queen', view: 'Direct ocean', fire: 'Gas', bath: 'Soaking tub and shower', sleeps: '2', direct: true, wood: false, four: false },
+      { name: 'Longfellow Suite', group: 'garden', groupLabel: 'Garden House', line: 'A bright suite with a spacious living room and lots of light.', bed: 'King or two twins', view: 'Ocean', fire: 'Gas', bath: 'Tub and shower', sleeps: '2', direct: false, wood: false, four: false },
+      { name: 'Wyeth Loft', group: 'garden', groupLabel: 'Garden House', line: 'An airy upstairs room that feels like a treehouse over the gardens.', bed: 'King', view: 'Ocean', fire: 'Gas', bath: 'Deep soaking tub, steam and rain shower', sleeps: '2', direct: false, wood: false, four: false },
+      { name: 'Thaxter Loft', group: 'garden', groupLabel: 'Garden House', line: 'Bright and quiet on the Garden House second floor.', bed: 'King', view: 'Gardens', fire: 'Gas', bath: 'Deep soaking tub, rain shower', sleeps: '2', direct: false, wood: false, four: false },
+      { name: 'Garden House Suite', group: 'garden', groupLabel: 'Garden House', line: 'Overlooks the gardens, with a full galley kitchen and eating nook.', bed: 'King or two twins + queen sofa bed', view: 'Gardens', fire: 'Gas', bath: 'Shower', sleeps: '4', direct: false, wood: false, four: true }
+    ];
+const ROOM_PHOTOS = {
+  "Winslow Homer Cottage": "homer-cottage-living.jpg",
+  "Fitz Henry Lane Cottage": "lane-cottage-sitting.jpg",
+  "Rachel Carson Cottage": "carson-cottage-bedroom.jpg",
+  "Edward Hopper Cottage": "hopper-cottage-bath.jpg",
+  "May Sarton Room": "sarton-room-bedroom.jpg",
+  "Sarah Orne Jewett Room": "jewett-room-bedroom.jpg",
+  "Garden House Suite": "garden-house-suite-bedroom.jpg"
+};
+const groupDefs = [['all','All 12'],['cottage','Cottages'],['main','Main House'],['garden','Garden House']];
+const featDefs = [['direct','Direct ocean view'],['wood','Wood-burning fireplace'],['four','Sleeps 4']];
+const state = { group: 'all', feat: 'none' };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pill = (on, label, attrs, small) => on
+  ? `<button type="button" aria-pressed="true" ${attrs} style="font: inherit; font-size: ${small?14:15}px; ${small?'':'letter-spacing: 0.08em; '}padding: ${small?'9px 16px':'11px 20px'}; border-radius: 999px; border: 1px solid ${small?'#8A5C0F':'#1B2A33'}; background: ${small?'#D49A2E':'#1B2A33'}; color: ${small?'#1B2A33':'#FAFAF7'}; cursor: pointer">${label}</button>`
+  : `<button type="button" aria-pressed="false" ${attrs} style="font: inherit; font-size: ${small?14:15}px; ${small?'':'letter-spacing: 0.08em; '}padding: ${small?'9px 16px':'11px 20px'}; border-radius: 999px; border: 1px solid ${small?'#C9D0CC':'#A9B4B8'}; background: ${small?'#FAFAF7':'transparent'}; color: #1B2A33; cursor: pointer">${label}</button>`;
+function photo(r) {
+  const src = ROOM_PHOTOS[r.name];
+  if (src) return `<img src="photos/${src}" alt="${esc(r.name)}" loading="eager" style="aspect-ratio: 3 / 2; width: 100%; height: auto; object-fit: cover; display: block">`;
+  return `<div role="img" aria-label="Photo coming soon: ${esc(r.name)}" style="aspect-ratio: 3 / 2; background: #DDE2DD; display: flex; align-items: end; padding: 14px"><p style="margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B686E">Photo coming soon</p></div>`;
+}
+function card(r) {
+  return `<article data-room="${esc(r.name)}" style="display: flex; flex-direction: column; gap: 14px">
+${photo(r)}
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #8A5C0F">${esc(r.groupLabel)}</p>
+<h2 style="margin: 0; font-family: 'Italiana', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1">${esc(r.name)}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #33434B">${esc(r.line)}</p>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 15px">
+<dt style="color: #5B686E">Bed</dt><dd style="margin: 0">${esc(r.bed)}</dd>
+<dt style="color: #5B686E">View</dt><dd style="margin: 0">${esc(r.view)}</dd>
+<dt style="color: #5B686E">Fireplace</dt><dd style="margin: 0">${esc(r.fire)}</dd>
+<dt style="color: #5B686E">Bath</dt><dd style="margin: 0">${esc(r.bath)}</dd>
+<dt style="color: #5B686E">Sleeps</dt><dd style="margin: 0">${esc(r.sleeps)}</dd>
+</dl>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid #D9DEDA">
+<p style="margin: 0; font-size: 16px">From [$___] / night</p>
+<div style="display: flex; gap: 10px"><a href="#room" style="font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px">Details</a><a href="#book" style="background: #1B2A33; color: #FAFAF7; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px; text-decoration: none">Book this room</a></div>
+</div>
+</article>`;
+}
+function render() {
+  document.getElementById('groups').innerHTML = groupDefs.map(([id, l]) => pill(state.group === id, l, `data-group="${id}"`, false)).join('');
+  document.getElementById('feats').innerHTML = featDefs.map(([id, l]) => pill(state.feat === id, l, `data-feat="${id}"`, true)).join('');
+  const vis = rooms.filter((r) => (state.group === 'all' || r.group === state.group) && (state.feat === 'none' || r[state.feat]));
+  document.getElementById('grid').innerHTML = vis.map(card).join('');
+  document.getElementById('count').textContent = 'Showing ' + vis.length + (vis.length === 1 ? ' room' : ' rooms');
+  document.getElementById('empty').hidden = vis.length !== 0;
+}
+document.addEventListener('click', (e) => {
+  const g = e.target.closest('[data-group]'); if (g) { state.group = g.dataset.group; render(); }
+  const f = e.target.closest('[data-feat]'); if (f) { state.feat = state.feat === f.dataset.feat ? 'none' : f.dataset.feat; render(); }
+});
+document.getElementById('tbody').innerHTML = rooms.map((r) => `<tr style="border-bottom: 1px solid #D9DEDA"><td style="padding: 12px 10px"><a href="#room">${esc(r.name)}</a></td><td style="padding: 12px 10px; color: #33434B">${esc(r.groupLabel)}</td><td style="padding: 12px 10px; color: #33434B">${esc(r.bed)}</td><td style="padding: 12px 10px; color: #33434B">${esc(r.view)}</td><td style="padding: 12px 10px; color: #33434B">${esc(r.fire)}</td><td style="padding: 12px 10px; color: #33434B">${esc(r.bath)}</td><td style="padding: 12px 10px; color: #33434B">${esc(r.sleeps)}</td></tr>`).join('');
+render();
+</script>
+</body>
+</html>

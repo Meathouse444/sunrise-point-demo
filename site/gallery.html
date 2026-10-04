@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo gallery · The Inn at Sunrise Point</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300..700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F2F3EF;color:#1B2A33;font-family:'Jost','Avenir Next','Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1B2A33}a:hover{color:#8A5C0F}
+img{max-width:100%}
+:focus-visible{outline:2px solid #D49A2E;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<div style="width: 100%; background: #F2F3EF; color: #1B2A33; font-family: 'Jost', 'Avenir Next', 'Segoe UI', sans-serif">
+
+<header style="max-width: 1280px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+<a href="home.html" aria-label="The Inn at Sunrise Point, home" style="display: flex; align-items: center"><img src="logo.png" alt="The Inn at Sunrise Point" style="height: 72px; width: auto; display: block"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase">
+<a href="rooms.html" style="text-decoration: none">Stay</a>
+<a href="offers.html" style="text-decoration: none">Offers</a>
+<a href="#celebrate" style="text-decoration: none">Celebrate</a>
+<a href="story.html" aria-current="page" style="text-decoration: underline; text-underline-offset: 8px; text-decoration-color: #D49A2E">The Inn</a>
+<a href="#midcoast" style="text-decoration: none">Midcoast</a>
+<a href="#plan" style="text-decoration: none">Plan</a>
+</nav>
+<a href="#book" style="background: #D49A2E; color: #1B2A33; padding: 14px 26px; border-radius: 2px; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">Book your stay</a>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 40px; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #8A5C0F">The Inn · Gallery</p>
+<h1 style="margin: 0; font-family: 'Italiana', Georgia, serif; font-weight: 400; font-size: clamp(44px, 5.5vw, 76px); line-height: 1.04; max-width: 18ch; text-wrap: balance">Inside the rooms and cottages</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #33434B; max-width: 38rem">Twelve rooms, each with its own view. Tap any photo to see that room and book it.</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 32px 112px; display: flex; flex-direction: column; gap: 32px">
+<div id="tabs" role="tablist" aria-label="Photo groups" style="display: flex; flex-wrap: wrap; gap: 6px 28px; border-bottom: 1px solid #C9D0CC"></div>
+<div id="photos" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px"></div>
+</section>
+
+<section style="background: #1B2A33; color: #EEF1EC">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px">
+<h2 style="margin: 0; font-family: 'Italiana', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 22ch">Seen enough? The view is better in person.</h2>
+<a href="#book" style="background: #D49A2E; color: #1B2A33; padding: 16px 28px; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">Check availability</a>
+</div>
+</section>
+</div>
+<script>
+const photos = [
+  ['cottages', 'homer-cottage-living.jpg', 'Winslow Homer Cottage, fireside with an ocean view'],
+  ['cottages', 'lane-cottage-sitting.jpg', 'Fitz Henry Lane Cottage sitting area'],
+  ['cottages', 'carson-cottage-bedroom.jpg', 'Rachel Carson Cottage bedroom and deck'],
+  ['main', 'sarton-room-bedroom.jpg', 'May Sarton Room, four-poster and private deck'],
+  ['main', 'jewett-room-bedroom.jpg', 'Sarah Orne Jewett Room'],
+  ['garden', 'garden-house-suite-bedroom.jpg', 'Garden House Suite'],
+  ['baths', 'homer-cottage-bath.jpg', 'Winslow Homer Cottage soaking tub'],
+  ['main', 'sarton-room-bed-detail.jpg', 'Handcrafted four-poster in the May Sarton Room'],
+  ['baths', 'hopper-cottage-bath.jpg', 'Edward Hopper Cottage bath'],
+  ['baths', 'lane-cottage-bath.jpg', 'Fitz Henry Lane Cottage bath'],
+  ['baths', 'carson-cottage-bath.jpg', 'Rachel Carson Cottage bath with freestanding tub'],
+  ['baths', 'garden-house-suite-bath.jpg', 'Garden House Suite shower']
+];
+const tabsDef = [['all', 'All'], ['cottages', 'Cottages'], ['main', 'Main House'], ['garden', 'Garden House'], ['baths', 'Baths']];
+let tab = 'all';
+function render() {
+  document.getElementById('tabs').innerHTML = tabsDef.map(([id, l]) => {
+    const on = tab === id;
+    return `<button type="button" role="tab" aria-selected="${on}" data-tab="${id}" style="font: inherit; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; border-bottom: 3px solid ${on ? '#D49A2E' : 'transparent'}; padding: 14px 0; margin-bottom: -1px; color: ${on ? '#1B2A33' : '#5B686E'}; cursor: pointer">${l}</button>`;
+  }).join('');
+  document.getElementById('photos').innerHTML = photos.filter((p) => tab === 'all' || p[0] === tab).map(([, src, cap]) =>
+    `<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="photos/${src}" alt="${cap}" style="aspect-ratio: 3 / 2; width: 100%; height: auto; object-fit: cover; display: block"><figcaption style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px"><span style="color: #33434B">${cap}</span><a href="rooms.html" style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap">View room</a></figcaption></figure>`).join('');
+}
+document.addEventListener('click', (e) => { const t = e.target.closest('[data-tab]'); if (t) { tab = t.dataset.tab; render(); } });
+render();
+</script>
+</body>
+</html>
